@@ -18,14 +18,21 @@ def main():
     if not args:
         parser.print_help()
         sys.exit(1)
+    text = args.text
+    no_option = True
+    if args.upper:
+        no_option = False
+        text = convert_to_upper(text)
+    if args.lower:
+        no_option = False
+        text = convert_to_lower(text)
     if args.title:
-        print convert_to_title(args.text)
-    elif args.lower:
-        print convert_to_lower(args.text)
-    elif args.upper:
-        print convert_to_upper(args.text)
-    else:
+        no_option = False
+        text = convert_to_title(text)
+    if no_option:
         print args.text
+    else:
+        print text
 
 
 def convert_to_upper(text):
