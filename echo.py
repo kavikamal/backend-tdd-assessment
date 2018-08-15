@@ -15,16 +15,17 @@ def main():
     parser.add_argument('text',
                         help='text to be manipulated')
     args = parser.parse_args()
-    print "Args---", args
     if not args:
-        parser.print_usage()
+        parser.print_help()
         sys.exit(1)
-    elif args.title:
-        print convert_to_title(args.title)
+    if args.title:
+        print convert_to_title(args.text)
     elif args.lower:
-        print convert_to_lower(args.lower)
+        print convert_to_lower(args.text)
     elif args.upper:
-        print convert_to_upper(args.upper)
+        print convert_to_upper(args.text)
+    else:
+        print args.text
 
 
 def convert_to_upper(text):
